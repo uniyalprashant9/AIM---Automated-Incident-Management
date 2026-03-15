@@ -334,28 +334,28 @@ A plain JSON object or Event Grid array is also accepted as a fallback.
 
 ## Environment Variables Reference
 
-| Variable | Required | Description |
-|---|---|---|
-| `AzureWebJobsServiceBus` | ✅ | Service Bus connection string |
-| `ServiceBusQueueName` | ✅ | Queue name |
-| `AZURE_OPENAI_ENDPOINT` | ✅ | Azure OpenAI resource endpoint |
-| `AZURE_OPENAI_CHAT_DEPLOYMENT` | ✅ | Chat model deployment name |
-| `AZURE_OPENAI_EMBEDDING_DEPLOYMENT` | ✅ | Embedding model deployment name |
-| `AZURE_OPENAI_API_VERSION` | | API version (default: `2025-01-01-preview`) |
-| `AZURE_SEARCH_ENDPOINT` | ✅ | Azure AI Search endpoint |
-| `AZURE_SEARCH_INDEX_NAME` | | Index name (default: `incidents`) |
-| `AZURE_SUBSCRIPTION_ID` | | Subscription ID for Monitor API calls |
-| `APPINSIGHTS_APP_ID` | | Application Insights App ID for KQL queries |
-| `MONITORED_RESOURCE_ID` | | Fallback resource ID if not in alert payload |
-| `AZDO_ORG` | | Azure DevOps organisation name |
-| `AZDO_PROJECT` | | Azure DevOps project name |
-| `AZDO_REPO` | | Repository name |
-| `AZDO_PAT` | | Personal Access Token (Code Read & Write, Pull Request Contribute, Build Read & Execute) |
-| `AZDO_BRANCH` | | Target branch for PRs (default: `main`) |
-| `SQL_CONNECTION_STRING` | ✅ | pyodbc connection string |
-| `MAX_AGENT_ITERATIONS` | | Max agents per session (default: `10`) |
-| `SESSION_TIMEOUT_SECONDS` | | Session wall-clock timeout (default: `300`) |
-| `DEDUP_WINDOW_MINUTES` | | Dedup window in minutes (default: `60`) |
+| Variable | Description |
+|---|---|
+| `AzureWebJobsServiceBus` | Service Bus connection string |
+| `ServiceBusQueueName` | Queue name |
+| `AZURE_OPENAI_ENDPOINT` | Azure OpenAI resource endpoint |
+| `AZURE_OPENAI_CHAT_DEPLOYMENT` | Chat model deployment name |
+| `AZURE_OPENAI_EMBEDDING_DEPLOYMENT` | Embedding model deployment name |
+| `AZURE_OPENAI_API_VERSION` | API version (default: `2025-01-01-preview`) |
+| `AZURE_SEARCH_ENDPOINT` | Azure AI Search endpoint |
+| `AZURE_SEARCH_INDEX_NAME` | Index name (default: `incidents`) |
+| `AZURE_SUBSCRIPTION_ID` | Subscription ID for Monitor API calls |
+| `APPINSIGHTS_APP_ID` | Application Insights App ID for KQL queries |
+| `MONITORED_RESOURCE_ID` | Fallback resource ID if not in alert payload |
+| `AZDO_ORG` | Azure DevOps organisation name |
+| `AZDO_PROJECT` | Azure DevOps project name |
+| `AZDO_REPO` | Repository name |
+| `AZDO_PAT` | Personal Access Token (Code Read & Write, Pull Request Contribute, Build Read & Execute) |
+| `AZDO_BRANCH` | Target branch for PRs (default: `main`) |
+| `SQL_CONNECTION_STRING` | pyodbc connection string |
+| `MAX_AGENT_ITERATIONS` | Max agents per session (default: `10`) |
+| `SESSION_TIMEOUT_SECONDS` | Session wall-clock timeout (default: `300`) |
+| `DEDUP_WINDOW_MINUTES` | Dedup window in minutes (default: `60`) |
 
 ---
 
