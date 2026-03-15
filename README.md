@@ -393,6 +393,12 @@ A plain JSON object or Event Grid array is also accepted as a fallback.
 
 ---
 
+## AI‑Generated Code Notice
+
+This project was generated with the assistance of AI tools.
+
+---
+
 ## License
 
 This project is licensed under the MIT License.
