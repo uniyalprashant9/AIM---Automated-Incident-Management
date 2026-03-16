@@ -1,6 +1,55 @@
 # AIM - Automated Incident Management
 
+## The Problem
+
+Modern cloud systems generate an enormous volume of telemetry - alerts, logs, metrics, and events. Engineering teams often struggle with:
+
+- Delayed issue detection due to noisy, inconsistent, or fragmented telemetry.
+- Manual diagnosis, which requires deep expertise to assess severity, identify root cause, and categorize incidents
+- Slow remediation, as fixes must be designed, coded, reviewed, and deployed by engineers
+- Poor or incomplete documentation, leading to repeated mistakes and knowledge loss
+
+These challenges extend incident resolution times, increase operational costs, require constant on‑call staffing, and reduce system reliability.
+AIM aims to solve this by orchestrating four AI‑powered agents-Incident, Diagnosis, Remediation, and Documentation -to fully automate the end‑to‑end incident lifecycle.
+
+---
+## Our Solution
+
 An AIOps system built on **Azure Functions** that autonomously detects, diagnoses, remediates, and documents infrastructure incidents. When an Azure Monitor alert fires, the system orchestrates a sequential pipeline of four AI agents — each powered by Azure OpenAI — and produces a pull request with a code or configuration fix, a full incident report in Azure SQL, and a rich knowledge base entry for future retrieval.
+
+### Functional Overview
+
+AIM coordinates four intelligent agents to detect, diagnose, remediate, and document incidents. Each agent is dedicated to a specific stage in the lifecycle.
+
+1. **Incident Agent** – Detection
+The Incident Agent continuously monitors the environment for potential issues. It analyzes telemetry-alerts, metrics, and exceptions-by querying Azure Monitor and Application Insights. When abnormal patterns or signals are detected, the agent builds a detailed telemetry context and passes it to the next agent.
+**Output**: Telemetry package containing alerts, metrics, and exception data.
+
+2. **Diagnosis Agent** – Classification & Root Cause Analysis
+The Diagnosis Agent evaluates the telemetry received and performs two key tasks:
+a. Sends the telemetry to Azure OpenAI for classification
+Searches Azure AI Search for similar historical incidents
+b. It determines whether the signal represents a real incident or normal system noise.
+For actual incidents, it identifies the root cause, severity, and incident type.
+If the signal is normal, the workflow ends with no further action.
+**Output**: Structured Diagnosis Result with severity, root cause, incident category, and confidence score.
+
+3. **Remediation Agent** – Generate & Apply Fixes
+If an issue requires action, the Remediation Agent steps in.
+Using Azure OpenAI, it generates actionable remediation steps. It then:
+a. Commits code changes to Azure DevOps using REST APIs
+Creates a Pull Request
+b. Triggers the automated CI/CD pipeline
+c. Once the PR is reviewed and merged, the fix is deployed to production.
+**Output**: Remediation Result containing commit ID, PR link, remediation details, and confidence score.
+
+4. **Documentation Agent** – Summarize & Close
+The Documentation Agent compiles a complete incident report, including:
+a. Root cause
+b. Diagnosis summary
+c. Remediation steps
+d. Recommendations for prevention
+e. It records the incident summary in Azure SQL Database and indexes the case in Azure AI Search for future reference.
 
 ---
 
